@@ -1,0 +1,92 @@
+<div class="mt-20">
+    
+    <form class="py-20 max-w-md mx-auto" action="" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="mb-5">
+            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona la enfermedad</label>
+        <select (click)="cod_Cie()" (change)="selectCod_Cie($event)" formControlName="id_disease" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          
+            @for(enfermedad of enfermedades ;track enfermedad){
+                <option [value]="enfermedad.id_disease">
+                    {{enfermedad.cod_cie}}
+                </option>
+            }
+          
+        </select>
+        </div>
+        <div class="mb-5">
+            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona la medicina</label>
+        <select (click)="id_medicine()" (change)="selectMedicine($event)" formControlName="id_medicine" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+          
+            @for(medicina of medicinas ;track medicina){
+                <option [value]="medicina.id_medicine">
+                    {{medicina.antiobiotico}}
+                </option>
+            }
+          
+        </select>
+        </div>
+        <div formGroupName="age_group">
+            <div class="mb-5">
+                <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecciona el tipo de grupo</label>
+                <div *ngFor="let ageGroupOption of ageGroupOptions" >
+                    <input type="radio" [value]="ageGroupOption.value" (change)="selectAgeGroup($event)" name="ageGroupName">
+                    {{ ageGroupOption.label }}
+                </div>
+            </div>
+            <div class="mb-5 ">
+                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Edad</label>
+                <input type="text" id="email" formControlName="edad" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+              </div>
+              <div class="mb-5 ">
+                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Peso</label>
+                <input type="text" id="email" formControlName="peso" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+              </div>
+              <div class="mb-5 ">
+                <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen</label>
+                <input type="text" id="email" formControlName="imagen" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+              </div>
+              <div formGroupName="time">
+                <div class="mb-5 ">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duración</label>
+                    <input type="text" id="email" formControlName="duracion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                  </div>
+                  <div class="mb-5 ">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Frecuencia</label>
+                    <input type="text" id="email" formControlName="frecuencia" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                  </div>
+              </div>
+              <div formGroupName="dose">
+                <div class="mb-5 ">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Via de administracion</label>
+                    <input type="text" id="email" formControlName="via_admin" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                  </div>
+                  <div class="mb-5 ">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cantidad Recomendada</label>
+                    <input type="text" id="email" formControlName="cant_recomend" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                  </div>
+                  <div class="mb-5 ">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cantidad Máxima</label>
+                    <input type="text" id="email" formControlName="cant_max" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                  </div>
+              </div>
+              <div formGroupName="patients">
+                <div class="mb-5 ">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Categoria de Embarazo</label>
+                    <input type="text" id="email" formControlName="categ_embareazo" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                  </div>
+              </div>
+              <div formGroupName="composition">
+                <div class="mb-5 ">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Forma Farmaceutica</label>
+                    <input type="text" id="email" formControlName="form_farmaceutica" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                  </div>
+                  <div class="mb-5 ">
+                    <label for="text" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Concentracion</label>
+                    <input type="text" id="email" formControlName="concentracion" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" required />
+                  </div>
+              </div>
+        </div>
+        <button [disabled]="!form.valid" type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Guardar</button>
+    </form>
+
+</div>

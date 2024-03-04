@@ -1,0 +1,14 @@
+<div class="flex flex-col h-screen">
+    <app-navbar class="h-15"></app-navbar> <!-- Altura del navbar -->
+    
+    <div class="flex flex-grow">
+      <app-barra-lateral class="w-64 flex-shrink-0"> <!-- Barra lateral -->
+      </app-barra-lateral>
+  
+      <div class="flex-grow overflow-auto">
+        <router-outlet></router-outlet> <!-- Contenido principal -->
+      </div>
+    </div>
+  </div>
+
+<!-- <app-admin-dashboard></app-admin-dashboard> -->

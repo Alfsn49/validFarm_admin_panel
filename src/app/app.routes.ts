@@ -8,6 +8,15 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'usersTable',
+    loadComponent() {
+      return import('./components/admin-dashboard/users-table/users-table.component').then(
+        (m) => m.UsersTableComponent
+      );
+    },
+
+  },
+  {
     path: 'home',
     loadComponent() {
       return import('./components/ui/layout/layout.component').then(
